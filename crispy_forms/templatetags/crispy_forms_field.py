@@ -11,6 +11,10 @@ from crispy_forms.utils import TEMPLATE_PACK, get_template_pack
 
 register = template.Library()
 
+@register.filter
+def is_textinput(field):
+    return isinstance(field.field.widget, forms.CharField)
+
 
 @register.filter
 def is_checkbox(field):
