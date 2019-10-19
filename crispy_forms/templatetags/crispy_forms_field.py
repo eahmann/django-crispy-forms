@@ -13,7 +13,7 @@ register = template.Library()
 
 @register.filter
 def is_textinput(field):
-    return isinstance(field.field.widget, forms.CharField)
+    return isinstance(field.field.widget, forms.TextInput)
 
 
 @register.filter
