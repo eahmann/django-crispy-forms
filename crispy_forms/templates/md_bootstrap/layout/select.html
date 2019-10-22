@@ -1,0 +1,12 @@
+{% load crispy_forms_filters %}
+{% load l10n %}
+
+<select class="browser-default custom-select">
+<option value="" disabled selected>123</option>
+  {% for choice in field.field.choices %}
+    <option value="{{ choice.1|unlocalize }}">{{ choice.1|unlocalize }}</option>
+           {% if field.errors and forloop.last and not inline_class %}
+            {% include 'md_bootstrap/layout/field_errors_block.html' %}
+        {% endif %}
+    {% endfor %}
+</select>
