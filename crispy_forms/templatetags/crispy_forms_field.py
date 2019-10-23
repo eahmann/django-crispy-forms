@@ -6,10 +6,17 @@ except ImportError:
 from django import forms, template
 from django.conf import settings
 from django.template import Context, loader
+from captcha.fields import ReCaptchaField
 
 from crispy_forms.utils import TEMPLATE_PACK, get_template_pack
 
 register = template.Library()
+
+
+@register.filter
+def is_recaptcha(field):
+    return isinstance(field.field.widget, ReCaptchaField)
+
 
 @register.filter
 def is_textinput(field):
